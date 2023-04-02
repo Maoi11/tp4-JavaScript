@@ -77,6 +77,16 @@ class Persona {
       this.#peso = nuevoPeso;
     }
   }
+
+  get altura() {
+    return this.#altura;
+  }
+  set altura(nuevaAltura) {
+    if (nuevaAltura > 0) {
+      this.#altura = nuevoaAltura;
+    }
+  }
+
   get nacimiento() {
     return this.#nacimiento;
   }
@@ -138,15 +148,47 @@ else if (anioNac >= 1981 && anioNac <= 1993) {
     );
   }
   }
+
+  esMayorDeEdad () {
+    if (this.edad >= 18 ) {
+document.write(`<p>${this.nombre} es mayor de edad.</p>`);
+    } else {
+        document.write(`<p>${this.nombre} es menor de edad.</p>`);
+            }
+  }
+
+  generaDni() {
+    this.dni =(Math.floor(Math.random() * (99999999 - 10000000 + 10000000) + 10000000))
+    document.write(`<p>Su nuevo DNI es ${this.dni}.</p>`);
+}
+
+mostrarDatos() {
+    document.write(`<ul>
+    <li>Nombre: ${this.nombre}</li>
+    <li>Edad: ${this.edad}</li>
+    <li>DNI: ${this.dni}</li>
+    <li>Sexo: ${this.sexo}</li>
+    <li>Peso: ${this.peso}</li>
+    <li>Talla: ${this.altura}</li>
+    <li>Nacimiento: ${this.nacimiento}</li>
+    <li>Generación: ${this.generacion}</li>
+    <li>Cualidad de su generación: ${this.cualidad}</li>
+    
+    </ul>`);
+}
+  
 }
 
 
 const marisa = new Persona ('Marisa Garat', '28', 38183736, 'F', 78, 1.70, 1993);
 const sofia = new Persona ('Sofia Garat', '20', '44186713', 'F', 50, 1.65, 2002);
-const madre = new Persona ('Marisa Tettamanzi', '66', 17858723, 'F', 73, 1.64, 1965);
+
 console.log(marisa);
 marisa.mostrarGeneracion();
 console.log(sofia);
 sofia.mostrarGeneracion(); 
-console.log(madre);
-madre.mostrarGeneracion();
+marisa.esMayorDeEdad();
+marisa.generaDni();
+console.log(marisa);
+marisa.mostrarDatos();
+sofia.mostrarDatos();
